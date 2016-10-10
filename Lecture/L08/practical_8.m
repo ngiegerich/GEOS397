@@ -16,15 +16,16 @@ pcolor( topo );
 shading flat; 
 axis image; colorbar;
 hold on;
-contour( topo, [0, 0], 'k' ); % build my own coastlines by loopking at 0 elevation contour
+contour( topo, [100, 100], 'k' ); % build my own coastlines by loopking at 0 elevation contour
 demcmap(topo); 
 % How might we plot this data on a map instead of using pcolor()
 
 %% What about plotting on sphere
 
 [x,y,z] = sphere(50);          % create a sphere 
-s = surface(x,y,z);            % plot spherical surface
 
+s = surface(x,y,z); % plot spherical surface
+%%
 s.CData = topo;                % set color data to topographic data
 s.FaceColor = 'texturemap';    % use texture mapping
 % s.EdgeColor = 'none';          % remove edges

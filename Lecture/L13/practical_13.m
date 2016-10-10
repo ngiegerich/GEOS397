@@ -168,7 +168,7 @@ h = figure;
 quiver( X, Y, gradTi, gradTj );
 xlabel( 'x-axis' ); ylabel( 'y-axis' ); axis('tight');
 title('$\nabla T = \left(e^{(- x^2 - y^2)} - 2x^{2}e^{(- x^2 - y^2)}\right){\hat \imath} + \left( -2xye^{(- x^2 - y^2)}\right){\hat \jmath}$', 'Interpreter', 'Latex');
-
+imagesc(T) %made it colored
 %% Use the numeric gradient operator implementation instead
 
 % First we need to compute the actual scalar field
