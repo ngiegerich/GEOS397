@@ -43,7 +43,7 @@ colormap % Each row defines a three-element RGB triplet.
 
 figure;
 imagesc( x1, y1, F );
-colormap( jet ) % Each row defines a three-element RGB triplet.
+colormap( bone ) % Each row defines a three-element RGB triplet.
 colorbar;
 
 %% change the colormap interval
