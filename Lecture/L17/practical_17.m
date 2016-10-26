@@ -13,10 +13,19 @@ y = sin(x);
 
 plot(x,y,'k*'); xlabel('x [rad]'); ylabel('sin(x)'); axis('tight');
 
+<<<<<<< HEAD
 %% trapz  Trapezoidal numerical integration.
 Q = trapz( x, y ); % trapz(x-vector, y-vector)
+=======
+%%
+
+% trapz  Trapezoidal numerical integration.
+Q = trapz( x, y ) % trapz(x-vector, y-vector)
+
+%%
+>>>>>>> dylanmikesell/master
 
 f = @(x) sin(x);
-Qi = integral( f, 0, pi, 'AbsTol', 1.e-8 ); % new method
+Qi = integral( f, 0, pi, 'AbsTol', 1.e-8 ) % new method
 
 

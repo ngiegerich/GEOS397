@@ -4,38 +4,85 @@ clc
 
 % Class exercises
 
-%% Plotting
-
-[x, y, F] = peaks(40); % load a generic function from MATLAB
-
-x1 = x( 1, : ); % get the unique x-values
-y1 = y( :, 1 ); % get the unique y-values
-
-% plot the surface
-figure;
-surf(x,y,F); % surf(x-grid,y-grid, function(x,y))
-hold on;
-imagesc( x1, y1, F ); % imagesc(x-vector,y-vector, function(x,y))
-colormap(jet)
-xlabel('x'); ylabel('y'); zlabel('F(x,y)');
-
-%% add 10 to F
-
-F = F + 10;
-
-% plot the surface
-figure;
-surf(x,y,F); % surf(x-grid,y-grid, function(x,y))
-hold on;
-imagesc( x1, y1, F ); % imagesc(x-vector,y-vector, function(x,y))
-xlabel('x'); ylabel('y'); zlabel('F(x,y)');
-colormap(jet)
-
 %% Integration
 
-f = @(theta) ( cos(2*theta).^(-3) ) .* sin(2*theta);
 
-Qi = integral( f, 0, pi/6, 'AbsTol', 1.e-2 );
+
+%% 1
+
+f = @(y) sqrt( y + 1 );
+Qi = integral( f, 0, 3, 'AbsTol', 1.e-4 )
+
+%% 2
+
+f = @(r) (5*r) ./ ( 4 + r.^2 ).^2;
+Qi = integral( f, -1, 1, 'AbsTol', 1.e-8 )
+
+%% 3
+
+f = @(theta) ( cos(2*theta).^(-3) ) .* sin(2*theta);
+Qi = integral( f, 0, pi/6, 'AbsTol', 1.e-4 )
+
+%% 4
+
+f = @(x) exp(sin(x)) .* cos(x);
+Qi = integral( f, 0, pi/2, 'AbsTol', 1.e-4 )
+
+%% 5
+
+f = @(x) 2*x .* exp(x.^2) .* cos( exp(x.^2) );
+Qi = integral( f, 0, sqrt(log(pi)), 'AbsTol', 1.e-4 )
+
+%% 6
+
+f = @(y) 1 ./ ( 2 .* sqrt(y) .* (1 + sqrt(y)).^2 );
+Qi = integral( f, 1, 4, 'AbsTol', 1.e-4 )
+
+% Qi = 2/3
+
+%% Discrete case to solve integral
+
+format long
+
+% 1
+x = linspace(0,5,101);
+y = x .* exp(-x);
+
+plot(x,y,'k');
+xlabel('x'); ylabel('y=xe^{-x}');
+
+% 2 -- do by hand
+% 3 -- function is made and used in 4
+
+% 4
+a = 5;
+A = exactArea( a ); % 3
+
+% 5
+A1 = trapz(x,y);
+
+% 6 
+x = linspace(0,5,11);
+y = x .* exp(-x);
+A2 = trapz(x,y);
+
+x = linspace(0,5,1001);
+y = x .* exp(-x);
+A3 = trapz(x,y);
+
+% 7
+clc
+fprintf('11   pts. -- diff = %e\n',A-A2)
+fprintf('101  pts. -- diff = %e\n',A-A1)
+fprintf('1001 pts. -- diff = %e\n',A-A3)
+
+%%
+
+% 8
+f = @(x) x.*exp(-x);
+Qi = integral( f, 0, 5, 'AbsTol', 1.e-4 );
+fprintf('using integral -- diff = %e\n',A-Qi)
+
 
 
 %% Air temp
