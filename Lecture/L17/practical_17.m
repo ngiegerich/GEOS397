@@ -13,7 +13,7 @@ y = sin(x);
 
 plot(x,y,'k*'); xlabel('x [rad]'); ylabel('sin(x)'); axis('tight');
 
-% trapz  Trapezoidal numerical integration.
+%% trapz  Trapezoidal numerical integration.
 Q = trapz( x, y ); % trapz(x-vector, y-vector)
 
 f = @(x) sin(x);
