@@ -28,7 +28,7 @@ plot(x,yo,'bo'); % plot the (x,y) points with blue circles
 
 order = 0;
 P0 = polyfit(x,y,order)
-
+%%
 order = 1;
 P1 = polyfit(x,y,order)
 
@@ -91,13 +91,13 @@ yClean = m0*x + y0;
 figure;
 plot(x,yClean,'ro-'); hold on;
 legend('Original')
-
+%
 % add noise to the curve
 noise = 5*randn( 1, numel(yClean) );
 yDirty = yClean + noise;
 
 plot(x,yDirty,'b*');
-
+%
 % least-squares linear fit of noisy curve
 order = 1; % linear!
 p = polyfit( x, yDirty, order );
