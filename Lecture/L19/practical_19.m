@@ -161,7 +161,7 @@ fzerogui( J0, [a,b] );
 
 %% now just try fzero()
 
-myZero = fzero( J0, pi );
+myZero = fzero( J0, pi )
 % This will find the zero closest to pi, which should be the first zero
 
 %% for optimization problems, you can use fmin()
