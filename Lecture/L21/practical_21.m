@@ -44,7 +44,7 @@ plot(x0,y0,'r');
 V = vander(x0); % make the Vandermonde matrix
 c2 = V \ y0'; % need to transpose y so the shape is correct
 
-disp( c2 );
+%disp( c2 );
 
 figure;
 imagesc(V);
