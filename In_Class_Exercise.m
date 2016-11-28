@@ -16,3 +16,27 @@ wavesum = wave1+wave2+wave3;
 plot(t,wavesum);
 xl = [0 200];
 set(gca,'Xlim',xl);
+y = .005*t + wavesum;
+hold on 
+plot(y);
+%%
+N = numel(t);
+rng(0);
+n = randn(1,N);
+%plot(n);
+
+xn = y+0.5*n;
+figure;
+plot(t,wavesum,'b-',t,xn,'r-');
+axis([0 200 -4 4]);
+xlabel('Time [s]'); ylabel('x(t)');
+%%
+nfft = 2?nextpow2(N);
+[Pxx,f] = periodogram(x p,[],nfft,fs);
+figure;
+plot(f,Pxx); grid on;
+xlabel('Frequency [Hz]' ylim([0 1000]););
+ylabel('Power');
+title('Auto-Spectrum');
+ylim([0 1000]);
+
